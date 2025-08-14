@@ -1,0 +1,64 @@
+/* src/app/app.component.scss */
+
+.dashboard {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--light-bg); /* Usa a variável global */
+}
+
+.main-content {
+  flex: 1;
+  padding: 0 2rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.footer {
+  background: var(--white);
+  border-top: 1px solid var(--border-color);
+  padding: 1rem 2rem;
+  margin-top: auto;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.version {
+  font-family: 'Roboto Mono', monospace;
+  background: var(--light-bg);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .main-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding: 0 1rem 1rem;
+  }
+}
+
+/* TV/Large Screen Optimizations */
+@media (min-width: 1920px) {
+  .dashboard {
+    max-width: 1920px;
+    margin: 0 auto;
+  }
+  .main-content {
+    padding: 0 3rem 3rem;
+  }
+}

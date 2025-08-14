@@ -1,0 +1,83 @@
+<!-- src/app/components/products-table/products-table.component.html -->
+
+<section class="data-section">
+  <div class="section-header" [ngClass]="sectionHeaderClass">
+    <div class="section-title">
+      <i [class]="sectionTitleIconClass"></i>
+      <h2>{{ title }}</h2>
+    </div>
+    <div class="section-actions">
+      <button class="btn-refresh" (click)="onRefreshClick()">
+        <i class="fas fa-sync-alt" [ngClass]="{'rotate': loading}"></i>
+      </button>
+    </div>
+  </div>
+  <div class="table-wrapper">
+    <table class="data-table">
+      <thead>
+        <!-- Cabeçalho da tabela para produtos bloqueados -->
+        <tr *ngIf="type === 'blocked'">
+          <th>Código</th>
+          <th>Descrição</th>
+          <th>Bloqueio</th>
+          <th>Origem</th>
+          <th>Usuário</th>          
+        </tr>
+        <!-- Cabeçalho da tabela para produtos liberados -->
+        <tr *ngIf="type === 'released'">
+          <th>Código</th>
+          <th>Descrição</th>
+          <th>Liberação</th>
+          <th>Hora</th>
+          <th>Usuário</th>          
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Exibe spinner de carregamento se 'loading' for true -->
+        <ng-container *ngIf="loading">
+          <tr class="loading-row">
+            <td [attr.colspan]="type === 'blocked' ? 6 : 5">
+              <div class="loading-spinner">
+                <i class="fas fa-spinner fa-spin"></i>
+                <span>Carregando dados...</span>
+              </div>
+            </td>
+          </tr>
+        </ng-container>
+        <!-- Exibe mensagem de estado vazio se não houver produtos e não estiver carregando -->
+        <ng-container *ngIf="!loading && products.length === 0">
+          <tr class="empty-state-row">
+            <td [attr.colspan]="type === 'blocked' ? 6 : 5">
+              <div class="empty-state">
+                <i class="fas" [ngClass]="{'fa-check-circle': type === 'blocked', 'fa-inbox': type === 'released'}"></i>
+                <div *ngIf="type === 'blocked'">Nenhum produto bloqueado no momento</div>
+                <div *ngIf="type === 'released'">Nenhum produto liberado recentemente</div>
+              </div>
+            </td>
+          </tr>
+        </ng-container>
+        <!-- Itera sobre os produtos se não estiver carregando e houver produtos -->
+        <ng-container *ngIf="!loading && products.length > 0">
+          <tr *ngFor="let product of products" class="fade-in">
+            <!-- Renderiza colunas específicas para produtos bloqueados -->
+            <ng-container *ngIf="isBlockedProduct(product)">
+              <td><span class="code">{{ product.codigo }}</span></td>
+              <td>{{ product.descricao }}</td>
+              <td>{{ product.dataBloq | dateFormat }}</td>              
+              <td><span class="badge warning">{{ product.origem }}</span></td>
+              <td><strong>{{ product.usuarioBloq }}</strong></td>
+            </ng-container>
+            <!-- Renderiza colunas específicas para produtos liberados -->
+            <ng-container *ngIf="isReleasedProduct(product)">
+              <td><span class="code">{{ product.codigo }}</span></td>
+              <td>{{ product.descricao }}</td>
+              <td>{{ product.dataLib | dateFormat }}</td>
+              <td>{{ product.horaLib }}</td>
+              <td><strong>{{ product.usuarioLib }}</strong></td>              
+            </ng-container>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+</section>

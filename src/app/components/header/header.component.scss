@@ -1,0 +1,109 @@
+/* src/app/components/header/header.component.scss */
+
+.header {
+  background: var(--white);
+  border-bottom: 1px solid var(--border-color);
+  padding: 1rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  align-items: center;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  font-size: 1.1rem;
+}
+
+.logo i {
+  font-size: 1.5rem;
+  color: var(--accent-color);
+}
+
+.header-center h1 {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+}
+
+.connection-status {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--danger-color); /* Default state before connection */
+  animation: pulse 2s infinite;
+}
+
+.status-dot.connected {
+  background: var(--success-color);
+}
+
+.status-dot.connecting {
+  background: var(--warning-color);
+}
+
+.status-dot.error { /* Adicionado para o estado de erro */
+  background: var(--danger-color);
+}
+
+.last-update {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-family: 'Roboto Mono', monospace;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    text-align: center;
+    padding: 1rem;
+  }
+  .header-right {
+    align-items: center; /* Centraliza no cabeçalho em telas menores */
+  }
+  .header-center h1 {
+    font-size: 1.5rem;
+  }
+}
+
+/* TV/Large Screen Optimizations */
+@media (min-width: 1920px) {
+  .header {
+    padding: 1.5rem 3rem;
+  }
+  .header-center h1 {
+    font-size: 2.2rem;
+  }
+}

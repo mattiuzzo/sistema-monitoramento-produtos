@@ -1,0 +1,34 @@
+<!-- src/app/components/stats-cards/stats-cards.component.html -->
+
+<section class="stats-section">
+  <div class="stat-card blocked">
+    <div class="stat-icon">
+      <i class="fas fa-ban"></i>
+    </div>
+    <div class="stat-content">
+      <div class="stat-number" id="blockedCount">{{ blockedCount$ | async }}</div>
+      <div class="stat-label">Produtos Bloqueados</div>
+    </div>
+  </div>
+
+  <div class="stat-card released">
+    <div class="stat-icon">
+      <i class="fas fa-check-circle"></i>
+    </div>
+    <div class="stat-content">
+      <div class="stat-number" id="releasedCount">{{ releasedCount$ | async }}</div>
+      <div class="stat-label">Produtos Liberados</div>
+    </div>
+  </div>
+
+  <div class="stat-card refresh">
+    <div class="stat-icon">
+      <!-- Aplica a classe 'rotate' se estiver carregando -->
+      <i class="fas fa-sync-alt" id="refreshIcon" [ngClass]="{'rotate': refreshLoading$ | async}"></i>
+    </div>
+    <div class="stat-content">
+      <div class="stat-number" id="refreshTimer">{{ refreshTimer$ | async }}</div>
+      <div class="stat-label">Próxima Atualização (s)</div>
+    </div>
+  </div>
+</section>

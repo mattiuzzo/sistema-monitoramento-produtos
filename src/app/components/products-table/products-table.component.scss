@@ -1,0 +1,175 @@
+/* src/app/components/products-table/products-table.component.scss */
+
+.data-section {
+  background: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.section-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.blocked-header {
+  background: linear-gradient(135deg, var(--danger-color), #c0392b);
+  color: var(--white);
+  border: none;
+}
+
+.released-header {
+  background: linear-gradient(135deg, var(--success-color), #229954);
+  color: var(--white);
+  border: none;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.section-title h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.section-title i {
+  font-size: 1.2rem;
+}
+
+.btn-refresh {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: var(--white);
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: var(--transition);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-refresh:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(180deg);
+}
+
+/* Tabelas */
+.table-wrapper {
+  flex: 1;
+  overflow: auto;
+  /* max-height ajustado. Considerar a altura real do header/footer/stats cards */
+  max-height: calc(100vh - 400px);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.data-table thead {
+  background: #f8f9fa;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.data-table th {
+  padding: 1rem 0.75rem;
+  text-align: left;
+  font-weight: 600;
+  color: var(--text-primary);
+  border-bottom: 2px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.data-table td {
+  padding: 1rem 0.75rem;
+  border-bottom: 1px solid #e9ecef;
+  vertical-align: middle;
+}
+
+.data-table tbody tr {
+  transition: var(--transition);
+}
+
+.data-table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.data-table tbody tr:nth-child(even) {
+  background-color: rgba(248, 249, 250, 0.5);
+}
+
+.loading-row td, .empty-state-row td {
+  text-align: center;
+  padding: 3rem;
+}
+
+.loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+.loading-spinner i {
+  font-size: 1.2rem;
+  color: var(--accent-color);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-secondary);
+}
+
+.empty-state i {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--border-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .data-table {
+    font-size: 0.8rem;
+  }
+  .data-table th,
+  .data-table td {
+    padding: 0.75rem 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .table-wrapper {
+    overflow-x: auto; /* Permite scroll horizontal em telas muito pequenas */
+  }
+  .data-table {
+    min-width: 600px; /* Garante que a tabela não fique muito estreita */
+  }
+}
+
+/* TV/Large Screen Optimizations */
+@media (min-width: 1920px) {
+  .data-table {
+    font-size: 1rem;
+  }
+  .data-table th,
+  .data-table td {
+    padding: 1.25rem 1rem;
+  }
+}

@@ -1,0 +1,25 @@
+<!-- src/app/components/header/header.component.html -->
+
+<header class="header">
+  <div class="header-left">
+    <div class="logo">
+      <i class="fas fa-chart-line"></i>
+      <span>Sistema de Monitoramento</span>
+    </div>
+  </div>
+  <div class="header-center">
+    <h1>Controle de Produtos</h1>
+  </div>
+  <div class="header-right">
+    <div class="connection-status">
+      <div class="status-indicator">
+        <!-- Aplica a classe CSS dinamicamente com ngClass -->
+        <div class="status-dot" [ngClass]="connectionStatusClass$ | async"></div>
+        <!-- Exibe o texto de status dinamicamente -->
+        <span id="statusText">{{ connectionStatusText$ | async }}</span>
+      </div>
+      <!-- Exibe a última atualização dinamicamente -->
+      <div class="last-update" id="lastUpdate">{{ lastUpdate$ | async }}</div>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,14 @@
+<!-- src/app/components/error-modal/error-modal.component.html -->
+
+<!-- O modal é exibido/ocultado com base na classe 'show' controlada por [class.show] -->
+<div class="error-modal" [class.show]="show">
+  <div class="error-content">
+    <div class="error-icon">
+      <i class="fas fa-exclamation-circle"></i>
+    </div>
+    <div class="error-message">{{ message }}</div>
+    <button class="error-close" (click)="onClose()">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+</div>

@@ -26,7 +26,7 @@ export class ProductsTableComponent implements OnChanges {
   // Propriedades para classes CSS dinâmicas
   sectionHeaderClass: string = '';
   sectionTitleIconClass: string = '';
-
+  
   // detecta mudanças nas propriedades de entrada, especialmente 'type'
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['type']) {
@@ -58,4 +58,14 @@ export class ProductsTableComponent implements OnChanges {
   isReleasedProduct(product: Product): product is ReleasedProduct {
     return this.type === 'released';
   }
+
+  tpOrigem(product: Product): string {
+    if (this.isBlockedProduct(product)) {
+      return product.origem.substring(0, 1);
+    } else if (this.isReleasedProduct(product)) {
+      return '';
+    }
+    return '';
+  }
+
 }

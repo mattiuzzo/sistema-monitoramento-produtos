@@ -1,5 +1,5 @@
 // src/environments/environment.ts
 export const environment = {
   production: false,
-  apiBaseUrl: 'https://192.168.1.9:8091/rest' // Sua URL da API
+  apiBaseUrl: 'https://192.168.1.9:9991/rest' // Sua URL da API
 };

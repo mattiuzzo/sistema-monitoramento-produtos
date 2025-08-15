@@ -10,11 +10,21 @@
 }
 
 .section-header {
-  padding: 1.5rem;
+  padding: 1.0rem;
   border-bottom: 1px solid var(--border-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.badge.inclusao {
+  background: #0A4D79;
+  color: var(--white);
+}
+
+.badge.alteracao {
+  background: #F3F702;
+  color: #000000;
 }
 
 .blocked-header {
@@ -66,7 +76,7 @@
 
 /* Tabelas */
 .table-wrapper {
-  flex: 1;
+  flex: 0;
   overflow: auto;
   /* max-height ajustado. Considerar a altura real do header/footer/stats cards */
   max-height: calc(100vh - 400px);
@@ -76,6 +86,7 @@
   width: 100%;
   border-collapse: collapse;
   font-size: 0.9rem;
+  white-space: nowrap;
 }
 
 .data-table thead {
@@ -86,7 +97,7 @@
 }
 
 .data-table th {
-  padding: 1rem 0.75rem;
+  padding: 0.5rem 0.75rem;
   text-align: left;
   font-weight: 600;
   color: var(--text-primary);
@@ -95,7 +106,7 @@
 }
 
 .data-table td {
-  padding: 1rem 0.75rem;
+  padding: 0.4rem 0.5rem;
   border-bottom: 1px solid #e9ecef;
   vertical-align: middle;
 }
@@ -114,7 +125,7 @@
 
 .loading-row td, .empty-state-row td {
   text-align: center;
-  padding: 3rem;
+  padding: 1rem;
 }
 
 .loading-spinner {

@@ -15,4 +15,5 @@ export interface ReleasedProduct {
   dataLib: string;
   usuarioLib: string;
   horaLib: string;
+  empresa: string;
 }

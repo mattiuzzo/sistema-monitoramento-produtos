@@ -23,6 +23,7 @@ export class AppComponent implements OnInit {
   loading: boolean = false;
   errorMessage: string | null = null;
   showErrorModal: boolean = false;
+  
   private subscriptions = new Subscription(); // Para gerenciar as subscriptions
 
   constructor(public monitorService: MonitorService) {}
